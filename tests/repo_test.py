@@ -10,6 +10,9 @@ class MyTestCase(unittest.TestCase):
         dal.conn_string = 'sqlite:///db.sqlite'
         dal.connect()
 
+    def test_create_user(self):
+        session = dal.Session()
+
     def test_read_users(self):
         session = dal.Session()
         users = read_users(session)

@@ -4,8 +4,10 @@ Attempt use repository pattern to handle data transaction but this project doesn
 from db import User, dal
 
 
-def create_user():
-    pass
+def create_user(session, user):
+    session.add(user)
+    session.commit()
+    return user.user_id
 
 
 def read_users(session):
@@ -24,9 +26,10 @@ def delete_users():
 
 
 if __name__ == '__main__':
-    create_user()
     dal.connect()
     session = dal.Session()
+    user = create_user(session, User(name="Kay Doe", password="password", email="key.doe@mail.com"))
+    print(user)
     users = read_users(session)
 
     update_users()
