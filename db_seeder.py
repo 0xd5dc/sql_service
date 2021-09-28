@@ -1,12 +1,27 @@
+import db
+
+
 def user_seeder(size: int):
-    pass
+    """
+    :rtype: list
+    :return generated a list of user objects with a specific size
+    """
+    return [db.User() for _ in range(size)]
 
 
 def event_seeder(size: int, user_size: int):
+    """
+    :rtype: list
+    :return generated a list of event objects with a specific size
+    """
     pass
 
 
 def guest_seeder(size: int, user_size: int, event_size: int):
+    """
+    :rtype: list
+    :return generated a list of guest objects with a specific size
+    """
     pass
 
 
