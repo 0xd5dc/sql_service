@@ -1,16 +1,20 @@
 # SQL code adaptatiton of Go-lang project
-### Model 
+
+### Model
+
 - User
 - Event
 - Guest
+
 ## files
+
 - db.py
 - db_seeder.py
-## plan & implement 
+
+## plan & implement
+
 - [x] migration
-- [ ] seeder using faker
-- [ ] seeder factory pattern to extract data from files 
-- [ ] parse into objects
+- [x] seeder using faker
 - [ ] read events
 - [ ] create event
 - [ ] update event
@@ -21,7 +25,12 @@
 - [ ] delete user
 - [ ] add guest list
 - [ ] get guest list
+- optional
+- [ ] seeder factory pattern to extract data from files
+- [ ] parse into objects
+
 ## tests
+
 - [x] seeder
 - [ ] curd users
 - [ ] curd events
