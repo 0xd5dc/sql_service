@@ -3,6 +3,9 @@
 - User
 - Event
 - Guest
+## files
+- db.py
+- db_seeder.py
 ## plan & implement 
 - [ ] migration
 - [ ] seeder using faker
