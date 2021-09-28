@@ -59,7 +59,7 @@ class DataAccessLayer:
 
     def __init__(self):
         self.engine = None
-        self.conn_string = 'some conn string'
+        self.conn_string = 'sqlite:///db.sqlite'
 
     def connect(self):
         self.engine = create_engine(self.conn_string)
@@ -70,5 +70,6 @@ class DataAccessLayer:
 dal = DataAccessLayer()
 if __name__ == '__main__':
     engine = create_engine('sqlite:///:memory:')
+
     # create tables
     Base.metadata.create_all(engine)

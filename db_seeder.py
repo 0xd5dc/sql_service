@@ -1,5 +1,5 @@
 from faker import Faker
-from db import User, Event, Guest
+from db import User, Event, Guest, dal
 
 # use faker to populate the database with dummy data
 fake = Faker()
@@ -35,6 +35,15 @@ def guest_seeder(size: int, user_size: int, event_size: int):
 
 
 if __name__ == '__main__':
-    user_seeder(size=50)
+    users = user_seeder(size=50)
     event_seeder(size=100, user_size=50)
     guest_seeder(size=100, user_size=50, event_size=100)
+    dal.connect()
+    session = dal.Session()
+
+    # truncate tables
+    session.execute("delete from users")
+    session.commit()
+
+    session.bulk_save_objects(users)
+    session.commit()
