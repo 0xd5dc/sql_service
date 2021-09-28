@@ -1,4 +1,4 @@
-# SQL code samples
+# SQL code adaptatiton of Go-lang project
 ### Model 
 - User
 - Event
