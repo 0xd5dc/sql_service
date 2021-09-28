@@ -14,7 +14,7 @@ def event_seeder(size: int, user_size: int):
     :rtype: list
     :return generated a list of event objects with a specific size
     """
-    pass
+    return [db.Event() for _ in range(size)]
 
 
 def guest_seeder(size: int, user_size: int, event_size: int):
@@ -22,7 +22,7 @@ def guest_seeder(size: int, user_size: int, event_size: int):
     :rtype: list
     :return generated a list of guest objects with a specific size
     """
-    pass
+    return [db.Guest() for _ in range(size)]
 
 
 if __name__ == '__main__':
