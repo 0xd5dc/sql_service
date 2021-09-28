@@ -1,3 +1,6 @@
+"""Database seeder
+populate database with dummy variables
+"""
 from faker import Faker
 from db import User, Event, Guest, dal
 from random import randint

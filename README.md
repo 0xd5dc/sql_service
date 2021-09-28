@@ -31,6 +31,7 @@
 
 ## tests
 
+- [x] migration
 - [x] seeder
 - [ ] curd users
 - [ ] curd events
