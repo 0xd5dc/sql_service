@@ -15,16 +15,15 @@
 
 - [x] migration
 - [x] seeder using faker
+- [x] read users
+- [x] create user
+- [x] update user
+- [x] delete user
 - [ ] read events
 - [ ] create event
 - [ ] update event
 - [ ] delete event
-- [ ] read users
-- [ ] create user
-- [ ] update user
-- [ ] delete user
-- [ ] add guest list
-- [ ] get guest list
+- [ ] get guest list by event id
 - optional
 - [ ] seeder factory pattern to extract data from files
 - [ ] parse into objects
@@ -33,6 +32,14 @@
 
 - [x] migration
 - [x] seeder
-- [ ] curd users
+- [x] read users
+- [x] create user
+- [x] update user
+- [x] delete user
+
 - [ ] curd events
 - [ ] get guest list
+
+## issues
+- [ ] os path causes tests use different local db file 
+- [ ] SQLalchemy doesn't couple/decouple data automatically like Go-lang
