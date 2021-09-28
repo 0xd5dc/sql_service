@@ -7,7 +7,7 @@
 - db.py
 - db_seeder.py
 ## plan & implement 
-- [ ] migration
+- [x] migration
 - [ ] seeder using faker
 - [ ] seeder factory pattern to extract data from files 
 - [ ] parse into objects
@@ -22,6 +22,7 @@
 - [ ] add guest list
 - [ ] get guest list
 ## tests
+- [x] seeder
 - [ ] curd users
 - [ ] curd events
 - [ ] get guest list

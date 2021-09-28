@@ -6,7 +6,7 @@ guests: many to many
 """
 from sqlalchemy import Column, ForeignKey, Integer, String, DateTime, Boolean, create_engine, UniqueConstraint
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import relationship, backref, sessionmaker
 from datetime import datetime
 
 Base = declarative_base()
@@ -55,6 +55,19 @@ class Guest(Base):
     UniqueConstraint('user_id', 'event_id')
 
 
+class DataAccessLayer:
+
+    def __init__(self):
+        self.engine = None
+        self.conn_string = 'some conn string'
+
+    def connect(self):
+        self.engine = create_engine(self.conn_string)
+        Base.metadata.create_all(self.engine)
+        self.Session = sessionmaker(bind=self.engine)
+
+
+dal = DataAccessLayer()
 if __name__ == '__main__':
     engine = create_engine('sqlite:///:memory:')
     # create tables
