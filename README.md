@@ -10,6 +10,7 @@
 
 - db.py
 - db_seeder.py
+- repo.py
 
 ## plan & implement
 
@@ -19,10 +20,10 @@
 - [x] create user
 - [x] update user
 - [x] delete user
-- [ ] read events
-- [ ] create event
-- [ ] update event
-- [ ] delete event
+- [x] read events
+- [x] create event
+- [x] update event
+- [x] delete event
 - [ ] get guest list by event id
 - optional
 - [ ] seeder factory pattern to extract data from files
@@ -36,10 +37,12 @@
 - [x] create user
 - [x] update user
 - [x] delete user
-
-- [ ] curd events
+- [x] read events
+- [x] create event
+- [x] update event
+- [x] delete event
 - [ ] get guest list
 
-## issues
-- [ ] os path causes tests use different local db file 
+## issues & fixes
+- [x] os path causes tests use different local db file fixed by using in-memory db in unit-tests
 - [ ] SQLalchemy doesn't couple/decouple data automatically like Go-lang
