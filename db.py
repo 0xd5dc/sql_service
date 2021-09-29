@@ -33,7 +33,7 @@ class Event(Base):
 
     event_id = Column("id", Integer, primary_key=True, autoincrement=True)
     name = Column("name", String(255), nullable=False)
-    intro = Column("intro", String(255), nullable=False)
+    detail = Column("detail", String(255), nullable=False)
     owner_id = Column("owner_id", ForeignKey("users.id"), nullable=False)
     is_virtual = Column("is_virtual", Boolean)
     is_private = Column("is_private", Boolean)
