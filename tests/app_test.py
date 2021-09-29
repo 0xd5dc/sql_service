@@ -2,7 +2,7 @@ import unittest
 
 from db import dal, User, Event
 from db_seeder import run_seeder
-from repo import read_users, create_user, delete_user_by_email, update_user_name_by_email, create_event, read_events, \
+from app import read_users, create_user, delete_user_by_email, update_user_name_by_email, create_event, read_events, \
     delete_event_by_name, update_event_detail_by_name
 
 

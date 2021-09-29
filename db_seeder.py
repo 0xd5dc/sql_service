@@ -45,6 +45,14 @@ def guest_seeder(size: int, user_size: int, event_size: int):
 
 
 def run_seeder(session, user_size: int, event_size: int, guest_size: int):
+    """
+    composite all seeder to run at once
+    :param session:
+    :param user_size:
+    :param event_size:
+    :param guest_size:
+    :return:
+    """
     users = user_seeder(size=user_size)
     events = event_seeder(size=event_size, user_size=user_size)
     guests = guest_seeder(size=guest_size, user_size=user_size, event_size=event_size)
