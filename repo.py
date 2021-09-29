@@ -2,9 +2,9 @@
 Attempt use repository pattern to handle data transaction but this project doesn't use external APIs and SQLalchemy already functions like a repository with SQL database
 """
 import logging
+from datetime import datetime
 
-from sqlalchemy import update, select, delete
-from sqlalchemy.exc import MultipleResultsFound, IntegrityError
+from sqlalchemy import select
 
 from db import User, Event
 
@@ -76,7 +76,6 @@ def update_user_name_by_email(session, email, name):
     with session:
         user = session.execute(select(User).filter_by(email=email)).scalar_one()
         user.name = name
-        session.commit()
 
 
 def update_event_detail_by_name(session, name, detail):
@@ -88,9 +87,8 @@ def update_event_detail_by_name(session, name, detail):
     :return:
     """
     with session:
-        user = session.execute(select(User).filter_by(name=name)).scalar_one()
+        user = session.execute(select(Event).filter_by(name=name)).scalar_one()
         user.detail = detail
-        session.commit()
 
 
 def delete_user_by_email(session, email):
@@ -101,8 +99,8 @@ def delete_user_by_email(session, email):
     :return:
     """
     with session:
-        session.execute(delete(User).where(User.email == email))
-        session.commit()
+        user = session.execute(select(User).filter_by(email=email)).scalar_one()
+        user.deleted_at = datetime.now()
 
 
 def delete_event_by_name(session, name):
@@ -113,5 +111,5 @@ def delete_event_by_name(session, name):
     :return:
     """
     with session:
-        session.execute(delete(Event).where(Event.name == name))
-        session.commit()
+        user = session.execute(select(Event).filter_by(name=name)).scalar_one()
+        user.deleted_at = datetime.now()
