@@ -4,10 +4,11 @@ tables: users, events, guests
 users to events: one-to-many
 guests: many to many
 """
+from datetime import datetime
+
 from sqlalchemy import Column, ForeignKey, Integer, String, DateTime, Boolean, create_engine, UniqueConstraint
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, backref, sessionmaker
-from datetime import datetime
 
 Base = declarative_base()
 metadata = Base.metadata
@@ -42,7 +43,7 @@ class Event(Base):
     deleted_at = Column("deleted_at", DateTime(), default=None)
     start_at = Column("start_at", DateTime())
     end_at = Column("end_at", DateTime())
-    user = relationship("User", backref=backref('events', order_by=event_id))
+    user = relationship("User", backref=backref('events', order_by=event_id, cascade="all,delete"))
 
 
 class Guest(Base):
@@ -68,8 +69,3 @@ class DataAccessLayer:
 
 
 dal = DataAccessLayer()
-if __name__ == '__main__':
-    engine = create_engine('sqlite:///:memory:')
-
-    # create tables
-    Base.metadata.create_all(engine)
