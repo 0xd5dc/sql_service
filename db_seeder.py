@@ -1,9 +1,11 @@
 """Database seeder
 populate database with dummy variables
 """
-from faker import Faker
-from db import User, Event, Guest, dal
 from random import randint
+
+from faker import Faker
+
+from db import User, Event, Guest
 
 # use faker to populate the database with dummy data
 fake = Faker()
@@ -27,8 +29,8 @@ def event_seeder(size: int, user_size: int):
     :return generated a list of event objects with a specific size
     """
     return [Event(name=fake.sentence(5),
-                  intro=fake.sentence(),
-                  user_id=randint(1, user_size),
+                  detail=fake.sentence(),
+                  owner_id=randint(1, user_size),
                   is_virtual=fake.boolean(),
                   is_private=fake.boolean()) for _ in range(size)]
 
@@ -42,19 +44,17 @@ def guest_seeder(size: int, user_size: int, event_size: int):
                   event_id=randint(1, event_size)) for _ in range(size)]
 
 
-if __name__ == '__main__':
-    users = user_seeder(size=50)
-    events = event_seeder(size=100, user_size=50)
-    guests = guest_seeder(size=100, user_size=50, event_size=100)
-    dal.connect()
-    session = dal.Session()
+def run_seeder(session, user_size: int, event_size: int, guest_size: int):
+    users = user_seeder(size=user_size)
+    events = event_seeder(size=event_size, user_size=user_size)
+    guests = guest_seeder(size=guest_size, user_size=user_size, event_size=event_size)
+    # using preset connection string db.sqlite
 
     # truncate tables
     session.execute("delete from users")
     session.execute("delete from events")
     session.execute("delete from guests")
     session.commit()
-
     session.bulk_save_objects(users)
     session.bulk_save_objects(events)
     session.bulk_save_objects(guests)
